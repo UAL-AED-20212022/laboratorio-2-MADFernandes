@@ -19,11 +19,14 @@ def main():
         elif comandos[0] == "RPDE":
             lista_ligada.insert_after_item(comandos[2], comandos[1])
 
+#Insere elemento 
         elif comandos[0] == "RPAE":
             lista_ligada.insert_before_item(comandos[2], comandos[1])
 
+#Insere elemento no Indice pretendido 
         elif comandos[0] == "RPII":
             lista_ligada.insert_at_index(int(comandos[2]), comandos[1])
+
 #Verificar Nr de elementos na Lista
         elif comandos[0] == "VNE":
             print(f"O número de elementos são {lista_ligada.get_count()}.")
@@ -37,23 +40,27 @@ def main():
 
 #Eliminar Primeiro elemento da lista
         elif comandos[0] == "EPE":
-            lista_ligada.delete_at_start(lista_ligada)
-            print(f"O país {lista_ligada} foi eliminado da lista.")
+            pais_inicio = lista_ligada.start_node.get_item()
+            lista_ligada.delete_at_start()
+            print(f"O país {pais_inicio} foi eliminado da lista.")
 
 #Eliminar ultimo elemento da lista
         elif comandos[0] == "EUE":
-            x = lista_ligada.get_last_node()
+            pais_fim = lista_ligada.get_last_node()
             lista_ligada.delete_at_end()
-            print(f"O país {X} foi eliminado da lista.")
+            print(f"O país {pais_fim} foi eliminado da lista.")
 
 #Eliminar elemento da lista (Escolhido)
         elif comandos[0] == "EP":
-            lista_ligada.delete_element_by_value(comandos[1])
-            print(f"O país {lista_ligada} foi eliminado da lista.")
+            if lista_ligada.search_item(comandos[1]) is False:  # Atenção saída com insucesso.
+                print(f"O país {comandos[1]} não se encontra na lista.")
+            else:
+                lista_ligada.delete_element_by_value(comandos[1])
+                print(f"O país {comandos[1]} foi eliminado da lista.")
 
-        else:
+        else: #Pára o programa
             if comandos[0] == "":
                 break
         
-        lista_ligada.traverse_list()
+        #lista_ligada.traverse_list() -> Demonstração de lista!
         
