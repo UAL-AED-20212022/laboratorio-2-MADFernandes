@@ -122,7 +122,7 @@ class LinkedList:
     
     def delete_at_end(self):
         if self.start_node is None:
-            print("The list has no elemnet to delete")
+            print("The list has no element to delete")
             return
         n = self.start_node
         while n.ref.ref is not None:
